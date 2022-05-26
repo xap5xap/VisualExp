@@ -43,9 +43,8 @@ const NodeItem: FC<Props> = ({ node, contributors }) => {
         <Typography variant="body1" color="text.secondary" component="div">
           <MarkdownRender children={node.content || ""} />
         </Typography>
-      </CardContent>
-      <Divider />
-      <CardActions>
+        <Divider />
+
         <Box sx={{ display: "flex", flexDirection: "column", flex: 1, my: 2 }}>
           <Box
             sx={{
@@ -75,7 +74,7 @@ const NodeItem: FC<Props> = ({ node, contributors }) => {
           <Divider sx={{ my: 2 }} />
           {contributors}
         </Box>
-      </CardActions>
+      </CardContent>
     </Card>
   );
 };

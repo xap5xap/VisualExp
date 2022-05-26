@@ -86,13 +86,7 @@ export type NodeFireStore = {
 
 export type KnowledgeNode = Omit<
   NodeFireStore,
-  | "updatedAt"
-  | "changedAt"
-  | "createdAt"
-  | "contributors"
-  | "institutions"
-  | "tags"
-  | "parents"
+  "updatedAt" | "changedAt" | "createdAt" | "contributors" | "institutions" | "references" | "tags" | "parents"
 > & {
   // export type KnowledgeNode = NodeFireStore & {
   id: string;

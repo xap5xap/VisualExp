@@ -10,6 +10,7 @@ import Grid from "@mui/material/Grid";
 import LinkedNodes from "../../components/LinkedNodes";
 import NodeItem from "../../components/NodeItem";
 import NodeItemContributors from "../../components/NodeItemContributors";
+import ReferencesList from "../../components/ReferencesList";
 
 type Props = {
   node: KnowledgeNode;
@@ -64,6 +65,7 @@ const NodePage: NextPage<Props> = ({ node, keywords, createdStr, updatedStr }) =
               <NodeItemContributors contributors={node.contributors || []} institutions={node.institutions || []} />
             }
           />
+          <ReferencesList references={node.references || []} sx={{ mt: 3 }} />
         </Grid>
         <Grid item xs={12} sm={12} md={3}>
           <LinkedNodes data={node.children || []} header="Learn After" />
