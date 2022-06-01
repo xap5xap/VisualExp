@@ -94,7 +94,6 @@ export type KnowledgeNode = Omit<
   NodeFireStore,
   "updatedAt" | "changedAt" | "createdAt" | "contributors" | "institutions" | "tags" | "parents"
 > & {
-  // export type KnowledgeNode = NodeFireStore & {
   id: string;
   updatedAt?: string;
   nodeImage?: string;
@@ -107,4 +106,14 @@ export type KnowledgeNode = Omit<
   institutions?: KnowledgeNodeInstitution[];
   children?: LinkedKnowledgeNode[];
   parents?: LinkedKnowledgeNode[];
+};
+
+export type ResponseAutocompleteTags = {
+  results?: string[];
+  errorMessage?: string;
+};
+
+export type ResponseAutocompleteInstitutions = {
+  results?: string[];
+  errorMessage?: string;
 };
