@@ -97,6 +97,7 @@ export type KnowledgeNode = Omit<
   "updatedAt" | "changedAt" | "createdAt" | "contributors" | "institutions" | "tags" | "parents"
 > & {
   id: string;
+  bla?: string;
   updatedAt?: string;
   nodeImage?: string;
   changedAt?: string;
