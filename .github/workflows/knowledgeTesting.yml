@@ -1,4 +1,4 @@
-name: Knowledge_Testing
+name: Knowledge Testing
 on:
   pull_request:
     branches:
