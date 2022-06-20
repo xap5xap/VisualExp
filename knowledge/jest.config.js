@@ -10,7 +10,7 @@ const customJestConfig = {
   moduleDirectories: ["node_modules", "<rootDir>/"],
   testEnvironment: "jest-environment-jsdom",
   testMatch: ["**/__tests__/**/*.[jt]s?(x)"],
-  collectCoverage: true,
+  collectCoverage: false,
   collectCoverageFrom: ["components/**/*.{js,jsx,ts,tsx}", "pages/**/*.{js,jsx,ts,tsx}"],
   coverageThreshold: {
     global: {
