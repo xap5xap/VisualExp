@@ -1,0 +1,27 @@
+name: Knowledge Testing
+on:
+  pull_request:
+    branches:
+      - develop
+defaults:
+  run:
+    working-directory: ./knowledge
+jobs:
+  tests:
+    name: Unit tests - jest
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install and build
+        run: |
+          npm install
+          npm run build
+      - name: Unit tests
+        run: npm run test:ci

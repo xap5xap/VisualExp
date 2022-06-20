@@ -1,12 +1,10 @@
-import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import { SxProps, Theme } from "@mui/system";
 import Image from "next/image";
 import { forwardRef, MutableRefObject, useImperativeHandle, useRef } from "react";
-import { useQuery } from "react-query";
 
-import { getStats } from "../lib/knowledgeApi";
 import SearchInput from "./SearchInput";
+import Stats from "./Stats";
 
 type HomeSearchProps = {
   sx?: SxProps<Theme>;
@@ -23,9 +21,6 @@ const blurImage = () => {
 };
 
 const HomeSearch = forwardRef<HomeSearchRef, HomeSearchProps>(({ sx, onSearch }, ref) => {
-
-  const { data: stats } = useQuery("stats", getStats);
-
   const beginFiltersRef = useRef<HTMLDivElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
@@ -41,7 +36,7 @@ const HomeSearch = forwardRef<HomeSearchRef, HomeSearchProps>(({ sx, onSearch },
   return (
     <Box
       ref={beginFiltersRef}
-      id={"sdfs"}
+      data-testid="home-search"
       sx={{
         position: "relative",
         width: "100%",
@@ -66,8 +61,7 @@ const HomeSearch = forwardRef<HomeSearchRef, HomeSearchProps>(({ sx, onSearch },
         objectFit="cover"
         placeholder="blur"
         blurDataURL={blurImage()}
-        quality={80}
-
+        priority
       />
       <Box sx={{ position: "absolute", maxWidth: "100vw", width: { md: "60%", xs: "85%" } }}>
         <Box
@@ -92,13 +86,7 @@ const HomeSearch = forwardRef<HomeSearchRef, HomeSearchProps>(({ sx, onSearch },
         >
           <SearchInput onSearch={onSearch}></SearchInput>
         </Box>
-        {stats && (
-          <Typography textAlign="center" sx={{ mt: 4, mb: 10, fontSize: 16 }}>
-            Search {stats.nodes} nodes and {stats.links} links through {stats.proposals} proposals
-            <br />
-            from {stats.users} users in {stats.institutions} institutions
-          </Typography>
-        )}
+        <Stats />
       </Box>
     </Box>
   );
